@@ -1,0 +1,33 @@
+header {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  min-height: 64px;
+  padding: 0 24px;
+  background: #172554;
+  border-bottom: 3px solid #38bdf8;
+  border-radius: 50px;
+  margin: 5px;
+}
+
+header button {
+  min-width: 88px;
+  padding: 9px 16px;
+  color: #f8fafc;
+  letter-spacing: 0;
+  background: transparent;
+  border: 1px solid #93c5fd;
+  border-radius: 4px;
+  justify-content: end;
+}
+
+header button:hover {
+  color: #0f172a;
+  background: #bae6fd;
+  border-color: #bae6fd;
+}
+
+header button:focus-visible {
+  outline: 3px solid #facc15;
+  outline-offset: 3px;
+}
