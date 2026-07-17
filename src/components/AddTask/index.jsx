@@ -1,7 +1,10 @@
 import { DelTaskButton } from "../delTask";
 // import { useTodos } from "../../context/TodoContext";
 import { useState } from "react";
+import { Box, Container, Input, Paper, Typography } from "@mui/material";
+
 import "./style.css";
+import { produce } from "immer";
 
 export function AddTaskButton({ taskList, setTaskList }) {
   const [taskName, setTaskName] = useState("");
@@ -12,12 +15,21 @@ export function AddTaskButton({ taskList, setTaskList }) {
       alert("null");
       return;
     }
+    // setTaskList((TaskList) => [
+    //   //react give me the current list
+    //   ...TaskList,
+    //   { id: Date.now(), name: taskName, completed: false },
+    // ]);
 
-    setTaskList((TaskList) => [
-      //react give me the current list
-      ...TaskList,
-      { id: Date.now(), name: taskName, completed: false },
-    ]);
+    setTaskList((task) =>
+      produce(task, (draft) => {
+        draft.push({
+          id: Date.now(),
+          name: taskName,
+          completed: false,
+        });
+      }),
+    );
 
     setTaskName("");
   }

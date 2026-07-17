@@ -14,11 +14,16 @@
     "@emotion/react": "^11.14.0",
     "@emotion/styled": "^11.14.1",
     "@mui/material": "^9.2.0",
+    "@tailwindcss/vite": "^4.3.2",
     "axios": "^1.18.1",
+    "daisyui": "^5.6.18",
+    "dayjs": "^1.11.21",
+    "immer": "^11.1.11",
     "react": "^19.2.7",
     "react-dom": "^19.2.7",
     "react-router-dom": "^7.18.1",
-    "sass": "^1.101.0"
+    "sass": "^1.101.0",
+    "tailwindcss": "^4.3.2"
   },
   "devDependencies": {
     "@eslint/js": "^10.0.1",
@@ -30,5 +35,8 @@
     "eslint-plugin-react-refresh": "^0.5.3",
     "globals": "^17.7.0",
     "vite": "^8.1.1"
+  },
+  "allowScripts": {
+    "@parcel/watcher@2.5.6": true
   }
 }

@@ -1,15 +1,18 @@
-import "./style.css";
-import { Header } from "./components/header";
+import "../style.css";
+import { Header } from "../components/header";
 import axios from "axios";
 import { useEffect, useState } from "react";
 
 function Test() {
   const [catFact, setCatFact] = useState("");
-  useEffect(() => {
-    axios
-      .get("https://catfact.ninja/fact")
-      .then((b) => setCatFact(b.data.fact));
-  }, []);
+  // useEffect(() => {
+  // if (catFact) {
+  //   return;
+  // }
+  //   axios
+  //     .get("https://catfact.ninja/fact")
+  //     .then((b) => setCatFact(b.data.fact));
+  // }, []);
   function getCatFact() {
     axios
       .get("https://catfact.ninja/fact")

@@ -1,9 +1,11 @@
 import { StrictMode } from "react";
 import { createRoot } from "react-dom/client";
 import { TodoProvider } from "./context/TodoContext";
-// import './index.css'
+import "./index.css";
 import App from "./App.jsx";
-import Test from "./Test.jsx";
+import Test from "./router/Test.jsx";
+import Home from "./router/home.jsx";
+
 // import TodoList from "./components/todoList";
 
 import {
@@ -15,6 +17,7 @@ import {
 const router = createBrowserRouter([
   { path: "/", element: <App /> },
   { path: "/test", element: <Test /> },
+  { path: "/home", element: <Home /> },
 ]);
 
 import { createTheme, ThemeProvider } from "@mui/material";

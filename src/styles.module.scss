@@ -22,13 +22,18 @@
   align-items: "center"; /* Centers them horizontally */
   text-align: "center";
 }
-
+.pageContent {
+  margin: 0 24px;
+}
 .counter {
   font-size: 64px;
   color: #667085;
+  align-self: center;
+  text-align: center;
 }
 .sub {
   color: #2e3544;
+  text-align: center;
 }
 h1 {
   font-size: 48px;
@@ -38,9 +43,16 @@ grid {
   height: 100vh;
   min-height: 100vh;
 }
+.dashboard_left {
+  display: flex;
+  width: 100%;
+  gap: 24px;
+  align-items: flex-start;
+}
 .dashboard_right {
   /* 1. Limits the height to the remaining screen space */
   max-height: calc(100vh - 40px);
+  display: flex;
 
   /* 2. Allows vertical scrolling ONLY inside this column */
   overflow-y: auto;

@@ -1,6 +1,8 @@
 import { Box, Grid, Typography } from "@mui/material";
 import { TodoList } from "./components/TodoList";
 import { AddTaskButton } from "./components/AddTask";
+import { CompletedList } from "./components/CompletedList";
+
 // import { useTodos } from "./context/TodoContext";
 import styles from "./styles.module.scss";
 import { useState } from "react";
@@ -10,36 +12,50 @@ function App() {
   const [taskList, setTaskList] = useState([
     { id: 1, name: "Cook", completed: false },
     { id: 2, name: "Clean", completed: false },
-    { id: 3, name: "Cry", completed: false },
+    { id: 3, name: "Cry", completed: true },
   ]);
+
+  const progressCount =
+    taskList.length === 0
+      ? 0
+      : (taskList.filter((task) => task.completed).length / taskList.length) *
+        100;
 
   return (
     <Box component="main" className={styles.dashboard}>
       <Header />
-      <Grid
-        container
-        sx={{ width: "100%", maxHeight: "100vh", minHeight: "100vh" }}
+      <div
+        style={{ width: "100%", maxHeight: "100vh", minHeight: "100vh" }}
         className={styles.dashboard_left}
       >
-        <Grid
-          size={6}
-          sx={{
-            display: "grid",
-            placeContent: "center",
-            textAlign: "center",
-          }}
-        >
+        <div class="flex-container" style={{ width: "50%" }}>
           <h1>Let's complete today's tasks</h1>
 
-          <p className={styles.counter}>{taskList.length}</p>
+          <div
+            className={`radial-progress ${styles.counter}`}
+            style={{
+              "--value": progressCount,
+              "--size": "15rem",
+              "--thickness": "10px",
+              display: "grid",
+              margin: "0 auto",
+            }}
+            role="progressbar"
+          >
+            {Math.floor(progressCount)}%
+          </div>
+          <p className={styles.counter}>
+            {taskList.filter((task) => !task.completed).length}
+          </p>
           <p className={styles.sub}>Tasks remaining</p>
-        </Grid>
+          <CompletedList taskList={taskList} setTaskList={setTaskList} />
+        </div>
 
-        <Grid size={6} className={styles.dashboard_right}>
+        <div class="flex-container" style={{ width: "50%" }}>
           <AddTaskButton taskList={taskList} setTaskList={setTaskList} />
           <TodoList taskList={taskList} setTaskList={setTaskList} />
-        </Grid>
-      </Grid>
+        </div>
+      </div>
     </Box>
   );
 }
