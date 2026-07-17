@@ -2,6 +2,7 @@ import { useState } from "react";
 import { AddTaskButton } from "../AddTask";
 import { DelTaskButton } from "../delTask";
 import { CompletedListButton } from "../CompletedListButton";
+import { EditTask } from "../EditTask";
 
 import { Box, Container, Input, Paper, Typography } from "@mui/material";
 // import { useTodos } from "../../context/TodoContext";
@@ -27,6 +28,11 @@ export function TodoList({ taskList, setTaskList }) {
           <div className="todoPaper">
             <p className="todoText">{task.name}</p>
             <DelTaskButton
+              id={task.id}
+              taskList={taskList}
+              setTaskList={setTaskList}
+            />
+            <EditTask
               id={task.id}
               taskList={taskList}
               setTaskList={setTaskList}

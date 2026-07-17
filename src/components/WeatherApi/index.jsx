@@ -23,10 +23,9 @@ export function WeatherCall() {
         console.log(error);
       });
   }, []);
-
   return (
     <div>
-      <img src={weatherApi?.current?.condition?.icon} />
+      <img className="imgIcon" src={weatherApi?.current?.condition?.icon} />
       <h1> {weatherApi?.current?.condition.text}</h1>
       {/*? = only continue if value exists */}
     </div>

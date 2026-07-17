@@ -1,4 +1,5 @@
 import { Box, Container, Input, Paper, Typography } from "@mui/material";
+import "./style.css";
 
 export function CompletedListButton({ id, taskList, setTaskList }) {
   function markComplete() {
@@ -19,8 +20,8 @@ export function CompletedListButton({ id, taskList, setTaskList }) {
         listStyle: "none",
       }}
     >
-      <button className="btnDelete" onClick={markComplete}>
-        done
+      <button className="btnDone" onClick={markComplete}>
+        √
       </button>
     </Box>
   );

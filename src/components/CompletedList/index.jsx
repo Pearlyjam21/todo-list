@@ -16,8 +16,7 @@ export function CompletedList({ id, taskList, setTaskList }) {
         listStyle: "none",
       }}
     >
-      <button onClick={CompletedList}>done</button>
-
+      <h2>Completed Tasks</h2>
       {completedTasks.map((task) => (
         <div component="li" key={task.id}>
           <div className="todoPaper">

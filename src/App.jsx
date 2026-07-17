@@ -29,16 +29,16 @@ function App() {
         className={styles.dashboard_left}
       >
         <div class="flex-container" style={{ width: "50%" }}>
-          <h1>Let's complete today's tasks</h1>
+          <h2>Let's complete today's tasks</h2>
 
           <div
             className={`radial-progress ${styles.counter}`}
             style={{
               "--value": progressCount,
-              "--size": "15rem",
-              "--thickness": "10px",
+              "--size": "25rem",
+              "--thickness": "25px",
               display: "grid",
-              margin: "0 auto",
+              margin: "25px auto",
             }}
             role="progressbar"
           >
@@ -48,12 +48,13 @@ function App() {
             {taskList.filter((task) => !task.completed).length}
           </p>
           <p className={styles.sub}>Tasks remaining</p>
-          <CompletedList taskList={taskList} setTaskList={setTaskList} />
         </div>
 
         <div class="flex-container" style={{ width: "50%" }}>
+          <h2> Todo List</h2>
           <AddTaskButton taskList={taskList} setTaskList={setTaskList} />
           <TodoList taskList={taskList} setTaskList={setTaskList} />
+          <CompletedList taskList={taskList} setTaskList={setTaskList} />
         </div>
       </div>
     </Box>
