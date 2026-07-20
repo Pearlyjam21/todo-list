@@ -25,8 +25,10 @@ export function TodoList({ taskList, setTaskList }) {
     >
       {tTasks.map((task) => (
         <div component="li" key={task.id}>
-          <div className="todoPaper">
-            <p className="todoText">{task.name}</p>
+          <div class="mx-auto flex items-center gap-x-4 rounded-xl bg-white p-6 shadow-lg outline outline-black/5 dark:bg-slate-800 dark:shadow-none dark:-outline-offset-1 dark:outline-white/10">
+            <p class="text-xl font-medium text-black dark:text-white">
+              {task.name}
+            </p>
             <DelTaskButton
               id={task.id}
               taskList={taskList}

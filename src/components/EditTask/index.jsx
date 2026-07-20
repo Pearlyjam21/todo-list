@@ -1,6 +1,14 @@
 import { useState } from "react";
 import { produce } from "immer";
 
+/**
+ * @function EditTask
+ * @description edit the task
+ * @param {id} id of task
+ * @param {taskList} useState  of List
+ * @param {setTaskList} useState to change list
+ */
+
 export function EditTask({ id, taskList, setTaskList, index }) {
   const [newTaskName, setNewTaskName] = useState("");
   function handleEditTask() {
@@ -15,7 +23,7 @@ export function EditTask({ id, taskList, setTaskList, index }) {
         }
 
         //cannot add :task or else it wont loop
-        //task.id === id ? task.name = newTaskName:task
+        //task.id === id ? task.name = newTaskName : task
         // using ? needs truthy and falsy so we just use if
       }),
     );
@@ -30,7 +38,7 @@ export function EditTask({ id, taskList, setTaskList, index }) {
   }
 
   return (
-    <details>
+    <details class="text-xl font-medium text-black dark:text-white">
       <summary>Edit</summary>
 
       <label>New task name:</label>
