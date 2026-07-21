@@ -33,7 +33,7 @@ export function TodoList({ taskList, setTaskList }) {
               setTaskList={setTaskList}
               inputNewTaskName={inputNewTaskName}
             />
-            <DelTaskButton
+            {/* <DelTaskButton
               id={task.id}
               taskList={taskList}
               setTaskList={setTaskList}
@@ -43,7 +43,7 @@ export function TodoList({ taskList, setTaskList }) {
               id={task.id}
               taskList={taskList}
               setTaskList={setTaskList}
-            />
+            /> */}
           </div>
         </div>
       ))}

@@ -1,6 +1,9 @@
 import { useState } from "react";
 import { produce } from "immer";
 import "./style.css";
+import { AddTaskButton } from "../AddTask";
+import { DelTaskButton } from "../delTask";
+import { CompletedListButton } from "../CompletedListButton";
 
 /**
  * @function EditTask
@@ -54,9 +57,11 @@ export function EditTask({
     return (
       <>
         <input
+          placeholder={task.name}
           value={newTaskName}
           onChange={(event) => setNewTaskName(event.target.value)}
           autoFocus
+          style={{ color: "white" }}
         />
 
         <button onClick={handleEditTask}>Save</button>
@@ -73,6 +78,17 @@ export function EditTask({
       /> */}
       <p class="text-xl font-medium text-black dark:text-white">{task.name}</p>
       <button onClick={() => setIsEditing(true)}>Edit</button>
+      <DelTaskButton
+        id={task.id}
+        taskList={taskList}
+        setTaskList={setTaskList}
+      />
+
+      <CompletedListButton
+        id={task.id}
+        taskList={taskList}
+        setTaskList={setTaskList}
+      />
     </>
   );
 }
