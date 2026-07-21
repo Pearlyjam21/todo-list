@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { produce } from "immer";
+import "./style.css";
 
 /**
  * @function EditTask
@@ -9,7 +10,14 @@ import { produce } from "immer";
  * @param {setTaskList} useState to change list
  */
 
-export function EditTask({ id, taskList, setTaskList, index }) {
+export function EditTask({
+  task,
+  id,
+  taskList,
+  setTaskList,
+  inoutNewTaskName,
+}) {
+  const [isEditing, setIsEditing] = useState(false);
   const [newTaskName, setNewTaskName] = useState("");
   function handleEditTask() {
     setTaskList((taskList) =>
@@ -21,6 +29,7 @@ export function EditTask({ id, taskList, setTaskList, index }) {
         } else if (foundTask) {
           foundTask.name = newTaskName;
         }
+        setIsEditing(false);
 
         //cannot add :task or else it wont loop
         //task.id === id ? task.name = newTaskName : task
@@ -36,21 +45,72 @@ export function EditTask({ id, taskList, setTaskList, index }) {
     //       ),
     //   );
   }
+  function handleCancel() {
+    setNewTaskName(task.name);
+    setIsEditing(false);
+  }
 
+  if (isEditing) {
+    return (
+      <>
+        <input
+          value={newTaskName}
+          onChange={(event) => setNewTaskName(event.target.value)}
+          autoFocus
+        />
+
+        <button onClick={handleEditTask}>Save</button>
+        <button onClick={handleCancel}>Cancel</button>
+      </>
+    );
+  }
   return (
-    <details class="text-xl font-medium text-black dark:text-white">
-      <summary>Edit</summary>
-
-      <label>New task name:</label>
-
-      <input
+    <>
+      {/* <input
         placeholder="New task name"
         value={newTaskName}
         onChange={(event) => setNewTaskName(event.target.value)}
-      />
-
-      <button onClick={handleEditTask}>Save</button>
-    </details>
+      /> */}
+      <p class="text-xl font-medium text-black dark:text-white">{task.name}</p>
+      <button onClick={() => setIsEditing(true)}>Edit</button>
+    </>
   );
 }
 export default { EditTask };
+
+// export function EditTask({ task, setTaskList }) {
+//   const [isEditing, setIsEditing] = useState(false);
+//   const [newTaskName, setNewTaskName] = useState(task.name);
+
+//   function saveTask() {
+//     setTaskList((tasks) =>
+//       tasks.map((item) =>
+//         item.id === task.id
+//           ? { ...item, name: newTaskName }
+//           : item,
+//       ),
+//     );
+
+//     setIsEditing(false);
+//   }
+
+//   if (isEditing) {
+//     return (
+//       <>
+//         <input
+//           value={newTaskName}
+//           onChange={(event) => setNewTaskName(event.target.value)}
+//         />
+//         <button onClick={saveTask}>Save</button>
+//         <button onClick={() => setIsEditing(false)}>Cancel</button>
+//       </>
+//     );
+//   }
+
+//   return (
+//     <>
+//       <p>{task.name}</p>
+//       <button onClick={() => setIsEditing(true)}>Edit</button>
+//     </>
+//   );
+// }

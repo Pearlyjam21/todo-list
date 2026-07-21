@@ -1,19 +1,28 @@
+//run `npm run dev`
+
 import { Box, Grid, Typography } from "@mui/material";
 import { TodoList } from "./components/TodoList";
 import { AddTaskButton } from "./components/AddTask";
 import { CompletedList } from "./components/CompletedList";
+import axios from "axios";
 
 // import { useTodos } from "./context/TodoContext";
 import styles from "./styles.module.scss";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import "./style.css";
 import { Header } from "./components/header";
 function App() {
   const [taskList, setTaskList] = useState([
-    { id: 1, name: "Cook", completed: false },
-    { id: 2, name: "Clean", completed: false },
-    { id: 3, name: "Cry", completed: true },
+    // { id: 1, name: "Cook", completed: false },
+    // { id: 2, name: "Clean", completed: false },
+    // { id: 3, name: "Cry", completed: true },
   ]);
+
+  useEffect(() => {
+    axios
+      .get("http://localhost:3000/api/tasklist")
+      .then((res) => setTaskList(res.data));
+  }, []);
 
   const progressCount =
     taskList.length === 0
