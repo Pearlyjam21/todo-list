@@ -2,15 +2,17 @@ import { DelTaskButton } from "../delTask";
 // import { useTodos } from "../../context/TodoContext";
 import { useState } from "react";
 import { Box, Container, Input, Paper, Typography } from "@mui/material";
-
+import axios from "axios";
 import "./style.css";
 import { produce } from "immer";
+const supabaseKey = import.meta.env.SUPABASE_SECRET_KEY;
+const supabaseUrl = import.meta.env.SUPABASE_URL;
 
 export function AddTaskButton({ taskList, setTaskList }) {
   const [taskName, setTaskName] = useState("");
   // const { setTaskList } = useTodos();
 
-  function handleAddTask() {
+  async function handleAddTask() {
     if (!taskName.trim()) {
       alert("null");
       return;
@@ -20,6 +22,13 @@ export function AddTaskButton({ taskList, setTaskList }) {
     //   ...TaskList,
     //   { id: Date.now(), name: taskName, completed: false },
     // ]);
+    try {
+      const { data: newTask } = await axios.post("/api/tasklist", {
+        name: taskName,
+      });
+    } catch (error) {
+      console.log(error);
+    }
 
     setTaskList((task) =>
       produce(task, (draft) => {

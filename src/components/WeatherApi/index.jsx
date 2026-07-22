@@ -23,6 +23,7 @@ export function WeatherCall() {
         console.log(error);
       });
   }, []);
+
   return (
     <div>
       <img className="imgIcon" src={weatherApi?.current?.condition?.icon} />
