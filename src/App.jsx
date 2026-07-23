@@ -19,9 +19,7 @@ function App() {
   ]);
 
   useEffect(() => {
-    axios
-      .get("http://localhost:3000/api/tasklist")
-      .then((res) => setTaskList(res.data));
+    axios.get("/api/tasklist").then((res) => setTaskList(res.data));
   }, []);
 
   const progressCount =
