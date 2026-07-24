@@ -3,8 +3,10 @@ import "./style.css";
 import { Link } from "react-router-dom";
 import reactLogo from "../../assets/react.svg";
 import dayjs from "dayjs";
+import { useTodos } from "../../context/TodoContext";
 export function Header() {
   const today = dayjs().format("dddd, MMMM D, YYYY");
+  const { theme, toggleTheme } = useTodos();
   return (
     <header>
       <span>{today}</span> <img src={reactLogo}></img>
@@ -17,9 +19,17 @@ export function Header() {
       <Link to={"/home"}>
         <button>Home</button>
       </Link>
+      <Link to={"/hook"}>
+        <button>Hook</button>
+      </Link>
       <label className="swap swap-rotate">
         {/* this hidden checkbox controls the state */}
-        <input type="checkbox" className="theme-controller" value="synthwave" />
+        <input
+          onChange={toggleTheme}
+          type="checkbox"
+          className="theme-controller"
+          value="synthwave"
+        />
 
         {/* sun icon */}
         <svg

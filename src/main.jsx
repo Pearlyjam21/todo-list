@@ -5,6 +5,7 @@ import "./index.css";
 import App from "./App.jsx";
 import Test from "./router/Test.jsx";
 import Home from "./router/home.jsx";
+import Hook from "./router/hook.jsx";
 
 // import TodoList from "./components/todoList";
 
@@ -18,6 +19,7 @@ const router = createBrowserRouter([
   { path: "/", element: <App /> },
   { path: "/test", element: <Test /> },
   { path: "/home", element: <Home /> },
+  { path: "/hook", element: <Hook /> },
 ]);
 
 import { createTheme, ThemeProvider } from "@mui/material";

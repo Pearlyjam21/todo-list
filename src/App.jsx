@@ -17,6 +17,7 @@ function App() {
     // { id: 2, name: "Clean", completed: false },
     // { id: 3, name: "Cry", completed: true },
   ]);
+  console.log(taskList);
 
   useEffect(() => {
     axios.get("/api/tasklist").then((res) => setTaskList(res.data));
